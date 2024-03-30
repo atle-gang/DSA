@@ -137,4 +137,54 @@ for (int square : squareNumbers) {
 // Prints exactly the same as the previous example.
 ```
 
+## Array Capacity VS Length
 
+### Array Capacity
+
+Say we've created a new Array like this.
+
+```java
+DVD[] array = new DVD[6];
+```
+
+The Array's capacity must be decided when the Array is created. The capacity cannot be later changed. 
+
+The **capacity** of an Array in Java can be created by looking at the value of its `length` attribute. This is done by using the code `arr.length`, where `arr` is the name of the Array. 
+
+```java
+int capacity = array.length;
+System.out.println("The Array has a capacity of " + capacity);
+```
+
+Running this code will give the following output:
+```bash
+The Array has a capacity of 6
+```
+
+### Array Length
+
+The length of an Array is something you'll need to keep track of yourself, and you won't get any errors if you overwrite an existing DVD, or if you leave a gap in the Array.
+
+```java // Create a new array with a capacity of 6.
+int[] array = new int[6];
+
+// Current length is 0, because it has 0 elements.
+int length = 0;
+
+// Add 3 items into it.
+for (int i = 0; i < 3; i++) {
+    array[i] = i * i;
+    // Each time we add an element, the length goes up by one.
+    length++;
+}
+
+System.out.println("The Array has a capacity of " + array.length);
+System.out.println("The Array has a length of " + length);
+```
+
+Running this code will give the following output:
+
+```bash
+The Array has a capacity of 6
+The Array has a length of 3
+```
