@@ -15,7 +15,7 @@ Input: nums = [1,0,1,1,0,1]
 Output: 2
 ```
 
-### Constraints:
+**Constraints**:
 
 * 1 <= nums.length <= 105
 * nums[i] is either 0 or 1.
