@@ -35,3 +35,4 @@ Output: 2
 * After the loop, update `maxCount` to the maximum value between `maxCount` and `currentCount`.
 
 * Return `maxCount` as the result.
+
