@@ -188,3 +188,93 @@ Running this code will give the following output:
 The Array has a capacity of 6
 The Array has a length of 3
 ```
+
+## Array Insertions
+
+Inserting a new element into an Array can take many forms:
+
+1. Inserting a new element at the end of the Array.
+2. Inserting a new element at the beginning of the Array.
+3. Inserting a new element at any given index inside the Array.
+
+### Inserting at the END of an Array
+
+At any point in time, we know the index of the last element of the Array, we have kept track of it in our `length` variable. All we need to do for inserting an element at the end is to assign the new element at one index past the current last element.
+
+Here's the code to make a new Array that can hold up to `6` items, and then add items into the first 3 indexes.
+
+```java
+// Declare an integer array of 6 elements
+int[] intArray = new int[6];
+int length = 0;
+
+// Add 3 elements to the array
+for (int i = 0; i < 3; i++) {
+    intArray[length] = i;
+    length++;
+}
+```
+
+To help visualise what's happening, let's define a function, `printArray`:
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Declare an integer array of 6 elements
+        int[] intArray = new int[6];
+        int length = 0;
+
+        // Add 3 elements to the Array
+        for (int i = 0; i < 3; i++) {
+            intArray[length] = i;
+            length++;
+        }
+        printArray(intArray, length);
+    }
+
+    // Function to print the contents of the array
+    public static void printArray(int[] array, int length) {
+       for (int i = 0; i < array.length; i++) {
+            System.out.println("Index " + i + " contains " + array[i]);
+        }
+    }
+}
+```
+
+We will get the following output:
+
+```bash
+Index 0 contains 0.
+Index 1 contains 1.
+Index 2 contains 2.
+Index 3 contains 0.
+Index 4 contains 0.
+Index 5 contains 0.
+```
+
+Recall, indexes `3`, `4` and `5` are `0` because Java fills unused `int` Array slots with the default value, `0`
+
+Let's add a 4th element.
+
+```java
+intArray[length] = 10;
+length++;
+```
+
+Notice we also incremented the length? It is significant to increase the length by 1. If we skip this step, the next time we add another element, we'll accidentally overwrite the oone we just added.
+
+Running the `printArray` again, we get the following:
+
+```bash
+Index 0 contains 0.
+Index 1 contains 1.
+Index 2 contains 2.
+Index 3 contains 10.
+Index 4 contains 0.
+Index 5 contains 0.
+```
+
+### Inserting at the START of an Array
+
+To insert an element at the  start of an Array, we'll need to shift all other elements in the Array to the right by one index to create space for the new element.
+
