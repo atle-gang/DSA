@@ -276,5 +276,82 @@ Index 5 contains 0.
 
 ### Inserting at the START of an Array
 
-To insert an element at the  start of an Array, we'll need to shift all other elements in the Array to the right by one index to create space for the new element.
+To insert an element at the  start of an Array, we'll need to shift all other elements in the Array to the right by one index to create space for the new element. This is a very costly operation since each of the existing elements has to be shifted one step to the right. The need to shift everything implies that this is not a constant time operation. In fact, the time taken for insertion at the beginning of an Array will be proportional to the length of the Array. In terms of time complexity analysis, this is a linear time complexity: O(N), where N is the length of the Array.
 
+Here is what this looks likes in code.
+
+```java
+// First, we will have to create space for a new element.
+// We do that by shifting each element one index to the right.
+// This will firstly move the element at index 3, then 2, then 1, then finally 0.
+// We need to go backwards to avoid overwriting any elements.
+for (int i = 3; i <= 0; i--) {
+    intArray[i + 1] = intArray[i];
+}
+
+```
+
+1. **Loop Initialization**:
+* `int i = 3;`: We initialise i with a value one greater than the index of the last element in the array. In this case, since the array has 3 elements, `i` is initialized to 3.
+
+2. **Loop Condition**:
+* `i >= 0;`: This condition ensures that the loop continues as long as `i` is greater than or equal to 0. We want to move elements until we reach the beginning of the array (index 0).
+
+3. **Loop Iteration**:
+* `i--`: After each iteration of the loop, `i` is decremented by 1, moving backwards through the array.
+
+4. **Element Shifting**:
+* `intArray[i + 1] = intArray[i];`: In each iteration, the element at index i is moved one space to the right, replacing the element at index i + 1. This effectively shifts all elements towards the end of the array by one position.
+
+After this loop completes, the elements in the array have been shifted to the right, creating space at the beginning of the array. This allows you to insert a new element at the beginning without overwriting any existing elements.
+
+```java
+// Now that we have created space for the new element,
+// we can insert it at the beginning.
+intArray[0] = 20;
+```
+
+And here's the result of running `printArray`
+
+```bash
+Index 0 contains 20.
+Index 1 contains 0.
+Index 2 contains 1.
+Index 3 contains 2.
+Index 4 contains 10.
+Index 5 contains 0.
+```
+
+### Inserting Anywhere in the Array
+
+Similarly, for inserting at any given index, we first need to shift all the elements from that index onwards one position to the right. Once the space is created for the new element, we proceed with the insertion. If you think about it, insertion at the beginning is basically a special case of inserting an element at a given index- in that case, the gibe index was `0`.
+
+Here's what it looks like in code.
+
+```java
+// Say we want to insert the element at index 2,
+// First, we will have to create space for the new element.
+for (int i = 4; i >= 2; i--) {
+    // Shift each element one position to the right.
+    intArray[i + 1] = intArray[i];
+}
+
+// Now that we have created space for the new element, 
+// we can insert it at the required index.
+intArray[2] = 20;
+```
+
+And here's the result of running `printArray`
+
+```bash
+Index 0 contains 20.
+Index 1 contains 0.
+Index 2 contains 30.
+Index 3 contains 1.
+Index 4 contains 2.
+Index 5 contains 10.
+```
+
+Does that all sound good? The main thing to be careful of is remembering that array.length gives you the total capacity of the Array. If you want to know the last used slot, you'll need to keep track of this yourself using a length variable. Other than that, just be careful to read any elements you want to keep, before you overwrite them!
+
+We now have a fun problem for you to test your understanding on. Enjoy!
