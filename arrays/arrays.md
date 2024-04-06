@@ -354,4 +354,11 @@ Index 5 contains 10.
 
 Does that all sound good? The main thing to be careful of is remembering that array.length gives you the total capacity of the Array. If you want to know the last used slot, you'll need to keep track of this yourself using a length variable. Other than that, just be careful to read any elements you want to keep, before you overwrite them!
 
-We now have a fun problem for you to test your understanding on. Enjoy!
+## Array Deletions
+
+Deletion in an Array works in a very similar manner to insertion, and has the same three different cases:
+1. Deleting the last element of an Array
+2. Deleting the first element of the Array
+3. Deletion at any given index.
+
+### Deleting From the End of an Array
